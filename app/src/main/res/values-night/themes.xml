@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.Main" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="background">@color/mirage</item>
+        <item name="android:colorBackground">@color/mirage</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

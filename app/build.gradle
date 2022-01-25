@@ -1,0 +1,95 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.ets.androiddev"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile rootProject.file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.Compose.Core
+    }
+
+    packagingOptions {
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:${Versions.DesugarJdkLibs}"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines}"
+
+    implementation "androidx.core:core-ktx:${Versions.Androidx.CoreKtx}"
+    implementation "androidx.appcompat:appcompat:${Versions.Androidx.Appcompat}"
+    implementation "com.google.android.material:material:${Versions.Material}"
+
+    implementation "androidx.compose.runtime:runtime:${Versions.Compose.Core}"
+    implementation "androidx.compose.foundation:foundation:${Versions.Compose.Core}"
+    implementation "androidx.compose.foundation:foundation-layout:${Versions.Compose.Core}"
+    implementation "androidx.compose.animation:animation:${Versions.Compose.Core}"
+    implementation "androidx.compose.ui:ui:${Versions.Compose.Core}"
+    implementation "androidx.compose.runtime:runtime-livedata:${Versions.Compose.Core}"
+    implementation "androidx.compose.material:material:${Versions.Compose.Core}"
+    implementation "androidx.compose.material:material-icons-extended:${Versions.Compose.Core}"
+    implementation "androidx.compose.ui:ui-tooling:${Versions.Compose.Core}"
+    implementation "androidx.activity:activity-compose:${Versions.Compose.Activity}"
+    implementation "androidx.constraintlayout:constraintlayout-compose:${Versions.Compose.ConstraintLayout}"
+
+    implementation "com.google.accompanist:accompanist-insets:${Versions.Accompanist}"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Androidx.Lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Androidx.Lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Androidx.Lifecycle}"
+
+    testImplementation "junit:junit:${Versions.Testing.JUnit}"
+    testImplementation "io.kotest:kotest-assertions-core-jvm:${Versions.Testing.KotestAssertions}"
+
+    androidTestImplementation "androidx.test.ext:junit-ktx:${Versions.Testing.JUnitExt}"
+    androidTestImplementation "androidx.test:core:${Versions.Testing.AndroidTest}"
+    androidTestImplementation "androidx.test:rules:${Versions.Testing.AndroidTest}"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:${Versions.Compose.Core}"
+    androidTestImplementation "io.kotest:kotest-assertions-core-jvm:${Versions.Testing.KotestAssertions}"
+}

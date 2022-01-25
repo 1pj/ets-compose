@@ -1,0 +1,32 @@
+def AndroidxVersions = [
+        Lifecycle: '2.3.0',
+        CoreKtx  : '1.3.2',
+        Appcompat: '1.3.0-beta01'
+]
+
+def TestingVersions = [
+        AndroidTest     : '1.3.0',
+        JUnit           : '4.13.2',
+        JUnitExt        : '1.1.2',
+        KotestAssertions: '4.4.3'
+]
+
+def ComposeVersions = [
+        Core            : '1.0.2',
+        Activity        : '1.3.1',
+        ConstraintLayout: '1.0.0-rc01',
+]
+
+ext.Versions = [
+        AGP           : '7.0.2',
+        Kotlin        : '1.5.21',
+        Coroutines    : '1.5.2',
+        DesugarJdkLibs: '1.1.5',
+
+        Compose       : ComposeVersions,
+        Androidx      : AndroidxVersions,
+        Testing       : TestingVersions,
+
+        Material      : '1.3.0',
+        Accompanist   : '0.20.0'
+]
