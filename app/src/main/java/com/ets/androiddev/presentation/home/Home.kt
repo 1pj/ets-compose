@@ -96,6 +96,7 @@ fun Home(
                     OptionDialogItem(
                         title = place.displayText(),
                         action = {
+                            commands.invoke(HomeCommand.LoadData(place))
                             showPlaceSelection = false
                         }
                     )
