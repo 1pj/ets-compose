@@ -1,4 +1,3 @@
-
 package com.ets.androiddev.presentation.home.components.bottomsheet
 
 import androidx.compose.foundation.layout.Column
@@ -8,6 +7,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -55,11 +58,15 @@ internal fun ForecastBlock(
             if (i > 0) Divider()
             Spacers.Xs()
 
+            var isExpanded by rememberSaveable { mutableStateOf(false) }
             WeatherDetailsBlock(
                 title = item.dateTime.dayOfWeek.getName(),
                 weather = item,
-                temperatureUnit = temperatureUnit
-            )
+                temperatureUnit = temperatureUnit,
+                isExpanded = isExpanded
+            ) {
+                isExpanded = !isExpanded
+            }
             Spacers.Xs()
         }
     }
