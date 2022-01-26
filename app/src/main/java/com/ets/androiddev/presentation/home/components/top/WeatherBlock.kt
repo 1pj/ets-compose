@@ -43,7 +43,6 @@ internal fun WeatherBlock(
     onChangePlace: () -> Unit,
     onChangeTemperatureUnit: (TemperatureUnit) -> Unit
 ) {
-    // TODO: Ensure that LocalSystemUiController is provided from outer composables
     val systemUiController = LocalSystemUiController.current
     val contentColor = LocalContentColor.current
 

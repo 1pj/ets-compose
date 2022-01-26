@@ -1,6 +1,8 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -83,6 +85,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Androidx.Lifecycle}"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Androidx.Lifecycle}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Androidx.Lifecycle}"
+
+    implementation "com.google.dagger:hilt-android:${Versions.Hilt}"
+    kapt "com.google.dagger:hilt-compiler:${Versions.Hilt}"
 
     testImplementation "junit:junit:${Versions.Testing.JUnit}"
     testImplementation "io.kotest:kotest-assertions-core-jvm:${Versions.Testing.KotestAssertions}"

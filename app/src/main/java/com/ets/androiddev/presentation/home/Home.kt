@@ -1,5 +1,6 @@
 package com.ets.androiddev.presentation.home
 
+import android.view.Window
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomSheetScaffold
@@ -20,6 +21,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.sp
 import com.ets.androiddev.core.components.OptionDialog
 import com.ets.androiddev.core.components.OptionDialogItem
+import com.ets.androiddev.core.locals.LocalSystemUiController
+import com.ets.androiddev.core.locals.SystemUiController
 import com.ets.androiddev.core.theme.AppTheme
 import com.ets.androiddev.core.theme.Colors
 import com.ets.androiddev.domain.datatypes.Loading
@@ -37,7 +40,8 @@ private val SheetPeekHeight = 200.sp
 @Composable
 fun Home(
     state: HomeViewState,
-    commands: (HomeCommand) -> Unit
+    commands: (HomeCommand) -> Unit,
+    window: Window
 ) {
     val bottomSheetState = rememberBottomSheetScaffoldState()
     var showPlaceSelection by rememberSaveable { mutableStateOf(false) }
@@ -70,7 +74,8 @@ fun Home(
                             Colors.Alabaster
                         } else {
                             Colors.Mirage
-                        }
+                        },
+                        LocalSystemUiController provides SystemUiController(window)
                     ) {
                         WeatherBlock(
                             place = state.currentPlace,

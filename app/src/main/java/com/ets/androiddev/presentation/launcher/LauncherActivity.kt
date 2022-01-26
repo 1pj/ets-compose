@@ -8,7 +8,9 @@ import com.ets.androiddev.presentation.home.Home
 import com.ets.androiddev.presentation.home.HomeCommand
 import com.ets.androiddev.presentation.home.HomeViewModel
 import com.ets.androiddev.presentation.home.HomeViewState
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LauncherActivity : MviComposeActivity<HomeViewModel, HomeViewState, HomeCommand>() {
     override val viewModel by viewModels<HomeViewModel>()
 
@@ -17,6 +19,6 @@ class LauncherActivity : MviComposeActivity<HomeViewModel, HomeViewState, HomeCo
         state: HomeViewState,
         commands: (HomeCommand) -> Unit
     ) {
-        AppTheme { Home(state, commands) }
+        AppTheme { Home(state, commands, window) }
     }
 }

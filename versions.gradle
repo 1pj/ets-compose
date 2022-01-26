@@ -28,5 +28,7 @@ ext.Versions = [
         Testing       : TestingVersions,
 
         Material      : '1.3.0',
-        Accompanist   : '0.20.0'
+        Accompanist   : '0.20.0',
+
+        Hilt          : '2.38.1'
 ]
